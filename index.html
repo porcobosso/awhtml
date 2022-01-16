@@ -1,8 +1,8 @@
 <html>
     <head>test</head>
     <body>
-        account: <span id='account'></span><br>
-        land fee: <span id='text-land-com'></span><br>
+        account: <span id='account'></span><span id='text-land-com'></span><br><br>
+        balance: <span id='balance'></span>
         wait: <span id='wait'></span>
         <div id='log'></div>
     </body>
@@ -81,12 +81,18 @@
                 let loginTimeout = setInterval(function(){location.reload()}, 300000);
                 await serverLogin();
                 clearInterval(loginTimeout);
+                getBalance(wax.userAccount, wax.api.rpc).then(function(res){
+                    document.getElementById("balance").innerHTML = res;
+                })
 
                 const minedelay = await getMineDelay(wax.userAccount);
                 await count.wait(minedelay);
                 while(true){
                     let failCount = await mine(logging);
                     if(failCount>=10) location.reload();
+                    getBalance(wax.userAccount, wax.api.rpc).then(function(res){
+                        document.getElementById("balance").innerHTML = res;
+                    })
                     await count.wait(405000);
                 }
             }
