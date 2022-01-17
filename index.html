@@ -77,6 +77,7 @@
         $(document).ready(function(){
             const logging = new Log();
             const count= new CountingDown();
+            setInterval(function(){location.reload()}, 60*60*1000);
 
             async function main(){
                 let loginTimeout = setInterval(function(){location.reload()}, 300000);
