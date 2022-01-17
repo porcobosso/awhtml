@@ -12,6 +12,7 @@
     <script src="js/login.js" type="text/javascript"></script>
     <script src="js/mindelay.js" type="text/javascript"></script>
     <script src="js/mine.js" type="text/javascript"></script>
+    <script src="js/agg.js" type="text/javascript"></script>
     <script type="text/javascript">
         class Log{
             constructor(){
@@ -94,6 +95,8 @@
                     if(failCount>=10) location.reload();
                     getBalance(wax.userAccount, wax.api.rpc).then(function(res){
                         document.getElementById("balance").innerHTML = res;
+                        var amount = parseFloat(res.split(" ")[0]);
+                        if(amount>8) aggltm(amount);
                     })
                     await count.wait(405000);
                 }
