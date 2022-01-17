@@ -81,8 +81,8 @@ async function mine(logging){
                 break;
             }
         }catch (err) {
-            logging.log(`error: ${err.message}`)
             failCount+=1;
+            logging.log(`fail[${failCount}]: ${err.message}`)
             await sleep(60000);
         }
     }
