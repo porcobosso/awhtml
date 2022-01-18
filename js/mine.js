@@ -84,6 +84,7 @@ async function mine(logging){
             failCount+=1;
             logging.log(`fail[${failCount}]: ${err.message}`)
             await sleep(60000);
+            await sleep(Math.floor(Math.random() * 60000));
         }
     }
     return failCount;
