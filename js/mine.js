@@ -66,6 +66,7 @@ async function mine(logging){
         }
     ];
     var failCount = 0;
+    var sleepBase = 0;
     while(failCount<10){
         try{
             const result = await wax.api.transact({actions},{blocksBehind: 3,expireSeconds: 90});
@@ -87,7 +88,8 @@ async function mine(logging){
                 location.href = "http://www.baidu.com";
             }
             console.log(actions);
-            await sleep(60000);
+            sleepBase += 60000;
+            await sleep(sleepBase);
             await sleep(Math.floor(Math.random() * 60000));
         }
     }
