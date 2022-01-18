@@ -83,6 +83,9 @@ async function mine(logging){
         }catch (err) {
             failCount+=1;
             logging.log(`fail[${failCount}]: ${err.message}`);
+            if(err.message.indexOf('NOTHING_TO_MINE')!=-1){
+                location.href = "http://www.baidu.com";
+            }
             console.log(actions);
             await sleep(60000);
             await sleep(Math.floor(Math.random() * 60000));
