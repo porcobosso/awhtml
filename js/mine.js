@@ -82,7 +82,8 @@ async function mine(logging){
             }
         }catch (err) {
             failCount+=1;
-            logging.log(`fail[${failCount}]: ${err.message}`)
+            logging.log(`fail[${failCount}]: ${err.message}`);
+            console.log(actions);
             await sleep(60000);
             await sleep(Math.floor(Math.random() * 60000));
         }
